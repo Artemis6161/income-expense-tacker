@@ -1,0 +1,183 @@
+
+body, html {
+
+  background: linear-gradient(90deg, white , #f0f0f0 );
+
+  }
+.dashboard-container {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    gap: 20px;
+   
+  }
+
+  .dashboard-left {
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+    
+  }
+  
+  .dashboard-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+  }
+  .total-income p{
+    color: rgb(179, 136, 255);
+    font-size: 2rem;
+    
+    font-weight: 900;
+  }
+  .total-expense p{
+color: rgb(0, 176, 255);
+font-size: 2rem;
+    
+font-weight: 900;
+  }
+  .gain-loss p{
+    font-size: 2rem;
+    
+font-weight: 900;
+  }
+
+  .total-income, .total-expense, .gain-loss, .retirement-plan {
+    
+  
+    padding: 15px;
+  
+   
+  }
+  
+
+  
+ 
+  
+  .retirement-plan {
+    flex: 2;
+  }
+  
+  /* Right side styling */
+  .dashboard-right {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+  
+  }
+  
+  .chart-container {
+    width: 100%; /* Set width based on your layout needs */
+    max-width: 500px; /* Maximum width to control size */
+    height: 300px; /* Adjust height for rectangular shape */
+    padding: 10px;
+    background: #fff;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+  
+  
+  h3 {
+    font-size: 1rem;
+    color: #666;
+  }
+  
+  p {
+  
+    font-size: 1rem;
+ 
+  }
+  
+  
+  .retirement-plan {
+   flex: 2;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+   
+  }
+  .retirement-plan h2{
+    color: rgb(72, 199, 142);
+    
+  }
+  .dashboard-heading {
+    position: absolute; /* Positioning it relative to the container */
+    top: 10px; /* Distance from the top */
+    left: 10px; /* Distance from the left */
+    margin: 0; /* Remove default margin */
+     /* Adjust font size */
+    font-weight: bold; /* Make it bold */
+    
+ 
+  }
+  h4{
+    color: #363636;
+  }
+  .retirement-info {
+    padding: 10px;
+    display: flex;
+    flex-direction:row;
+    gap: 50px;
+  }
+
+  .retirement-plan .years-to-retirement {
+    position: absolute;
+    bottom: 1px;
+    right: 19px;
+    font-weight: bold;
+    font-size: 0.9rem;
+    color: #666;
+    
+  }
+
+  /* Media Queries for Responsiveness */
+@media (max-width: 768px) {
+    .dashboard-container {
+        flex-direction: column; /* Stack the left and right sections */
+    }
+
+    .dashboard-left, .dashboard-right {
+        width: 100%;
+        padding: 10px;
+    }
+
+    .total-income p, .total-expense p, .gain-loss p, .current-balance p {
+        font-size: 1.5rem; /* Smaller font for mobile */
+    }
+
+    .chart-container {
+        max-width: 100%; 
+        height: 250px; 
+    }
+
+    .retirement-info {
+        flex-direction: column; /* Stack retirement info vertically */
+        gap: 5px; /* Reduced gap */
+    }
+    
+    .retirement-plan .years-to-retirement {
+        bottom: 5px; /* Adjust positioning for mobile */
+        right: 10px; /* Adjust positioning for mobile */
+    }
+}
+
+@media (max-width: 480px) {
+    .total-income p, .total-expense p, .gain-loss p, .current-balance p {
+        font-size: 1.2rem; /* Further smaller font for very small screens */
+    }
+
+    .dashboard-heading {
+        font-size: 1.2rem; /* Adjust heading font size */
+    }
+  
+}

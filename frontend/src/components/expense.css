@@ -1,0 +1,359 @@
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent overlay */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+  
+  .modal-content {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    max-width: 500px;
+    width: 100%;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2);
+  }
+  
+  .modal-content h3 {
+    margin-top: 0;
+  }
+  
+  .modal-content form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .modal-content button[type="submit"] {
+    background-color: #4CAF50; /* Green for update */
+    color: #fff;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  
+  .modal-content button[type="button"] {
+    background-color: #f44336; /* Red for cancel */
+    color: #fff;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  
+  .modal-content button[type="button"]:hover,
+  .modal-content button[type="submit"]:hover {
+    opacity: 0.9;
+  }
+/* General Styling */
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(90deg, white, #f0f0f0);
+}
+
+/* Expense Container */
+.expense-container {
+    max-width: 800px; /* Set a max width for better control */
+    margin: auto; /* Center the container */
+    padding: 20px;
+    background: #fff;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+h2 {
+  padding: 10px;
+}
+
+/* Header */
+.total-income h2  {
+    text-align: center;
+    background: #fff;
+    max-width: 800px; /* Set a max width for better control */
+    margin: auto; /* Center the container */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    padding:10px;
+}
+/* Header */
+.expense   span{
+  color:#f44336;
+  
+}
+.income  span{
+  color: #0def2b;
+} 
+
+/* Form Styling */
+.expense-container form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* Space between form elements */
+    margin-bottom: 20px; /* Space below the form */
+}
+
+.expense-container input,
+.expense-container select,
+.expense-container textarea {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem; /* Consistent font size */
+}
+
+
+
+/* Expense Cards Styling */
+.expense-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* Space between cards */
+}
+
+.expense-card {
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.expense-card h3 {
+    margin: 0 0 10px; /* Margin below the title */
+    font-size: 1.2rem;
+}
+
+.expense-card p {
+    margin: 5px 0; /* Margin for paragraphs */
+}
+
+/* Modal Overlay */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    width: 90%; /* Responsive width */
+    max-width: 500px; /* Max width for the modal */
+}
+
+.modal-content h3 {
+    margin-top: 0; /* Remove default margin from top */
+}
+
+
+/* src/components/Expense.css */
+
+.expense-container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 20px;
+  display: flex;
+  gap: 20px;
+  border-radius: 12px;
+  background-color: #f5f5f5;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+form {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 20px;
+  border-radius: 12px;
+  background-color: #fff;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+form input,
+form select,
+form textarea {
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 14px;
+  background-color: #f9f9f9;
+}
+
+
+form button {
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  background-color: #4CAF50;
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: background-color 0.3s;
+}
+.form-button{
+  background-color: #fa3535;
+}
+.form-button:hover {
+  background-color: #fd0808;
+}
+form button:hover {
+  background-color: #45a049;
+}
+
+.total-expenses {
+  font-size: 18px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.total-expenses span {
+  color: #e91e63;
+}
+
+.expense-cards {
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.expense-card {
+  position: relative; 
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 25px;
+  border-radius: 12px;
+  background-color: #fff;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.expense-card-title {
+  font-size: 18px;
+  font-weight: bold;
+  color: #333;
+  margin: 0 0 10px 0;
+  align-self: flex-start;
+}
+
+.expense-card h3 {
+  display: flex;
+  align-items: center;
+  margin: 0;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.expense-card-icon {
+  position: absolute;
+  top: 20px; /* Align vertically within the card */
+  left: 20px; /* Align the icon to the left of the card */
+  font-size: 30px; /* Larger icon */
+  color: #e91e63;
+}
+
+.expense-card-details {
+  display: flex;
+  flex-direction: row;
+  font-size: 14px;
+  color: #666;
+  gap: 70px;
+}
+
+.expense-card-details p {
+  margin: 4px 0;
+}
+
+.expense-card button {
+  background: #051581;
+  border: none;
+  border-radius: 50%;
+  color: white;
+  padding: 10px;
+  cursor: pointer;
+  font-size: 14px;
+  margin-left: 10px;
+}
+
+.expense-card button:hover {
+  background: #051581;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .expense-container {
+    flex-direction: column;
+    padding: 10px;
+  }
+
+  .expense-cards {
+    flex: 1; /* Allow expense cards to take full width */
+  }
+
+  form {
+    padding: 15px;
+  }
+
+  form input,
+  form select,
+  form textarea {
+    font-size: 16px;
+  }
+
+
+
+  .total-expenses {
+    font-size: 16px;
+  }
+
+  .expense-card {
+    flex-direction: column; /* Stack items vertically on small screens */
+  }
+
+  .expense-card-details {
+    flex-direction: column; /* Stack details vertically on small screens */
+    gap: 20px; /* Reduce gap */
+  }
+}
+
+@media (max-width: 480px) {
+  .expense-card-title {
+    font-size: 16px;
+  }
+
+  .expense-card h3 {
+    font-size: 14px;
+  }
+
+  .expense-card-icon {
+    font-size: 30px; /* Smaller icon for very small screens */
+  }
+
+  .expense-card button {
+    padding: 8px; /* Smaller button */
+    font-size: 12px;
+  }
+}
+  

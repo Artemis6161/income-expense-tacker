@@ -1,0 +1,119 @@
+/* General navbar styling */
+body, html {
+  margin: 0;
+  padding: 0;
+}
+
+.navbar {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 20px;
+  box-sizing: border-box;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background-color: #fff;
+}
+
+/* Navbar logo */
+.navbar-logo {
+  color: #1E90FF;
+  font-size: 24px;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+/* Navbar links */
+.navbar-links {
+  display: flex;
+  align-items: center;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar-links li {
+  margin-left: 20px;
+}
+
+.navbar-links a {
+  color: #363636;
+  text-decoration: none;
+  font-size: 16px;
+  padding: 10px;
+  transition: background-color 0.3s ease;
+}
+
+/* Link hover effect */
+.navbar-links a:hover {
+  color: #1E90FF;
+  border-radius: 5px;
+}
+
+/* Login/Logout button styling */
+.navbar-button {
+  background-color: #1E90FF;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  padding: 10px 20px;
+ 
+  transition: background-color 0.3s ease;
+}
+
+.navbar-button:hover {
+  background-color: #1A73E8;
+}
+
+/* Hamburger menu for mobile view */
+.hamburger {
+  display: none;
+  cursor: pointer;
+  font-size: 24px;
+  color: #1E90FF;
+  padding: 0 20px;
+}
+
+@media (max-width: 768px) {
+  /* Hide the navbar links on small screens */
+  .navbar-links {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    background-color: #fff;
+  }
+
+  /* Display the navbar links when the hamburger menu is active */
+  .navbar-links.active {
+    display: flex;
+  }
+
+  /* Hamburger icon for mobile view */
+  .hamburger {
+    display: block;
+  }
+
+  /* Navbar button styling for mobile view */
+  .navbar-button {
+    margin-top: 10px;
+    width: 100%;
+    text-align: center;
+  }
+
+  .navbar-links li {
+    margin: 0;
+    width: 100%;
+    text-align: center;
+  }
+
+  .navbar-links a {
+    padding: 15px 0;
+  }
+}
