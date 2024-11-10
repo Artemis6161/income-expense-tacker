@@ -9,7 +9,7 @@ const incomeRoutes = require('./routes/incomeRoutes')
 const expenseRoutes = require('./routes/expenseRoutes')
 
 const app = express();
-const port = process.env.PORT || 400;
+const port = process.env.PORT || 5000;
 app.use(express.json({ extended: false }));
 
 // CORS options to allow requests from localhost:3000
