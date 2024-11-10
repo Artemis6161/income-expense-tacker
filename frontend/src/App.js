@@ -9,7 +9,6 @@ import Navbar from "./components/Navbar"
 import Login from "./components/login";
 import Register from "./components/Registration"
 import Profile from "./components/Profile"
-// import { AuthProvider } from './components/AuthContext';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 const App = () => {
