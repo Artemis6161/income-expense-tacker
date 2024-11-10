@@ -9,7 +9,7 @@ const incomeRoutes = require('./routes/incomeRoutes')
 const expenseRoutes = require('./routes/expenseRoutes')
 
 const app = express();
-
+const port = process.env.PORT || 400;
 app.use(express.json({ extended: false }));
 
 // CORS options to allow requests from localhost:3000
@@ -31,7 +31,7 @@ mongoose.connect(process.env.MONGO_URI)
     .then(() => console.log("DB connected successfully"))
     .catch((err) => console.log("Failed to connect database ", err))
 
-app.listen(5000, () => {
+app.listen(port, () => {
     console.log("server is running.. 5000");
     console.log(__dirname);
 })
