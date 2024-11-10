@@ -30,7 +30,7 @@ const Expense = () => {
 
   useEffect(() => {
     fetchExpenses();
-  }, []);
+  }, [fetchExpenses]);
 
   const fetchExpenses = async () => {
     const token = localStorage.getItem('authToken');

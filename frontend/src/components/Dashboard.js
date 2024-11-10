@@ -18,7 +18,7 @@ const Dashboard = () => {
   useEffect(() => {
     fetchTotals();
     fetchMonthlyData(); // Fetch the monthly data for the chart
-  }, []);
+  }, [fetchTotals, fetchMonthlyData]);
 
   const fetchTotals = async () => {
     const token = localStorage.getItem('authToken');
@@ -93,7 +93,7 @@ const Dashboard = () => {
   };
 
   const isGain = gainLoss >= 0;
-  const retirementStatus = retirementPlan.current >= retirementPlan.target;
+  // const retirementStatus = retirementPlan.current >= retirementPlan.target;
 
   return (
     <div className="dashboard-container">

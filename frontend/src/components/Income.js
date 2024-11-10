@@ -30,7 +30,7 @@ const Income = () => {
 
   useEffect(() => {
     fetchIncomes();
-  }, []);
+  }, [fetchIncomes]);
 
   const fetchIncomes = async () => {
     const token = localStorage.getItem('authToken'); // Get token from localStorage

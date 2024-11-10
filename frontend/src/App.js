@@ -1,5 +1,4 @@
 import React, { useState,useEffect } from 'react';
-import axios from 'axios';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
 import Income from "./components/Income"
 import Expense from "./components/Expense"
