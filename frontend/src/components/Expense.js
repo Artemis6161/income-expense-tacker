@@ -35,7 +35,7 @@ const Expense = () => {
   const fetchExpenses = async () => {
     const token = localStorage.getItem('authToken');
     try {
-      const res = await axios.get('http://localhost:5000/api/expense', {
+      const res = await axios.get('https://income-expense-tacker.onrender.com', {
         headers: { Authorization: `Bearer ${token}` },
       });
       setExpenses(res.data);
@@ -83,35 +83,7 @@ const Expense = () => {
     );
   };
 
-  // const handleSubmit = async (e) => {
-  //   e.preventDefault();
-  //   const token = localStorage.getItem('authToken');
-
-  //   try {
-  //     if (editId) {
-  //       // Update existing expense
-  //       await axios.put(
-  //         `http://localhost:5000/api/expense/${editId}`,
-  //         expense,
-  //         { headers: { Authorization: `Bearer ${token}` } }
-  //       );
-  //       setEditId(null);
-  //     } else {
-  //       // Add new expense
-  //       await axios.post(
-  //         'http://localhost:5000/api/expense',
-  //         expense,
-  //         { headers: { Authorization: `Bearer ${token}` } }
-  //       );
-  //     }
-
-  //     setExpense({ title: '', amount: '', category: '', description: '', date: '' });
-  //     setModalOpen(false);
-  //     fetchExpenses();
-  //   } catch (error) {
-  //     console.error('Error submitting expense:', error.response ? error.response.data : error);
-  //   }
-  // };
+ 
 
   // Calculate total expense
   const handleSubmit = async (e) => {
@@ -122,7 +94,7 @@ const Expense = () => {
       if (editId) {
         // Update existing expense
         await axios.put(
-          `http://localhost:5000/api/expense/${editId}`,
+          "https://income-expense-tacker.onrender.com",
           expense,
           { headers: { Authorization: `Bearer ${token}` } }
         );
@@ -130,7 +102,7 @@ const Expense = () => {
       } else {
         // Add new expense
         await axios.post(
-          'http://localhost:5000/api/expense',
+          "https://income-expense-tacker.onrender.com",
           expense,
           { headers: { Authorization: `Bearer ${token}` } }
         );
@@ -174,7 +146,7 @@ const Expense = () => {
   const handleDelete = async (id) => {
     const token = localStorage.getItem('authToken');
     try {
-      await axios.delete(`http://localhost:5000/api/expense/${id}`, {
+      await axios.delete("https://income-expense-tacker.onrender.com", {
         headers: { Authorization: `Bearer ${token}` },
       });
       fetchExpenses();

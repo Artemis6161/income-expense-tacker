@@ -23,10 +23,10 @@ const Dashboard = () => {
   const fetchTotals = async () => {
     const token = localStorage.getItem('authToken');
     try {
-      const incomeRes = await axios.get('http://localhost:5000/api/income', {
+      const incomeRes = await axios.get('https://income-expense-tacker.onrender.com', {
         headers: { Authorization: `Bearer ${token}` }
       });
-      const expenseRes = await axios.get('http://localhost:5000/api/expense', {
+      const expenseRes = await axios.get('https://income-expense-tacker.onrender.com', {
         headers: { Authorization: `Bearer ${token}` }
       });
 
@@ -55,10 +55,10 @@ const Dashboard = () => {
   const fetchMonthlyData = async () => {
     const token = localStorage.getItem('authToken');
     try {
-      const incomeRes = await axios.get('http://localhost:5000/api/income', {
+      const incomeRes = await axios.get('https://income-expense-tacker.onrender.com', {
         headers: { Authorization: `Bearer ${token}` }
       });
-      const expenseRes = await axios.get('http://localhost:5000/api/expense', {
+      const expenseRes = await axios.get('https://income-expense-tacker.onrender.com', {
         headers: { Authorization: `Bearer ${token}` }
       });
 

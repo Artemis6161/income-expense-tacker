@@ -35,7 +35,7 @@ const Income = () => {
   const fetchIncomes = async () => {
     const token = localStorage.getItem('authToken'); // Get token from localStorage
     try {
-      const res = await axios.get('http://localhost:5000/api/income', {
+      const res = await axios.get('https://income-expense-tacker.onrender.com', {
         headers: { Authorization: `Bearer ${token}` },
       });
       setIncomes(res.data);
@@ -91,7 +91,7 @@ const Income = () => {
       if (editId) {
         // Update existing income
         await axios.put(
-          `http://localhost:5000/api/income/${editId}`,
+         "https://income-expense-tacker.onrender.com",
           income,
           { headers: { Authorization: `Bearer ${token}` } }
         );
@@ -99,7 +99,7 @@ const Income = () => {
       } else {
         // Add new income
         await axios.post(
-          'http://localhost:5000/api/income',
+          "https://income-expense-tacker.onrender.com",
           income,
           { headers: { Authorization: `Bearer ${token}` } }
         );

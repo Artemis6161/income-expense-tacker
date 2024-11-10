@@ -15,7 +15,7 @@ const Login = ({ setIsAuthenticated, setUserName, userName }) => {
   const handleLogin = async (e) => {
   e.preventDefault();
   try {
-    const response = await axios.post('http://localhost:5000/user/login', { email, password });
+    const response = await axios.post('https://income-expense-tacker.onrender.com', { email, password });
 
     
     const { token, userId, userName } = response.data;

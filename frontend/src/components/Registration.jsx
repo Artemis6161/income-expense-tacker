@@ -22,7 +22,7 @@ function Registration() {
             password: password
         }
 
-        axios.post('http://localhost:5000/user/register', payload)
+        axios.post('https://income-expense-tacker.onrender.com', payload)
             .then((res) => {
                 setLoading(false)
                 toast("Registration Successful");
