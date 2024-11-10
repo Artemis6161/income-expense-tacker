@@ -17,7 +17,7 @@ const Login = ({ setIsAuthenticated, setUserName }) => {
 
     try {
       // Update the login API endpoint with the correct URL
-      const response = await axios.post('https://income-expense-tacker.onrender.com/api/login', { email, password });
+      const response = await axios.post('https://income-expense-tacker.onrender.com/user/login', { email, password });
 
       const { token, userId, userName } = response.data;
 
