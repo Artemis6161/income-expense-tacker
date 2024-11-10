@@ -14,7 +14,7 @@ app.use(express.json({ extended: false }));
 
 // CORS options to allow requests from localhost:3000
 const corsOptions = {
-   origin: 'https://your-frontend-url.com', // Replace with your actual frontend URL
+   origin: 'https://income-expense-tacker-frontend.onrender.com', // Replace with your actual frontend URL
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     credentials: true,
   };
