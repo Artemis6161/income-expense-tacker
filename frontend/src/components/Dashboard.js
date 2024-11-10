@@ -18,7 +18,7 @@ const Dashboard = () => {
   useEffect(() => {
     fetchTotals();
     fetchMonthlyData(); // Fetch the monthly data for the chart
-  }, [fetchTotals, fetchMonthlyData]);
+  }, []);
 
   const fetchTotals = async () => {
     const token = localStorage.getItem('authToken');

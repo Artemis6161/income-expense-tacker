@@ -14,8 +14,9 @@ app.use(express.json({ extended: false }));
 
 // CORS options to allow requests from localhost:3000
 const corsOptions = {
-    origin: 'http://localhost:3000', // Allow requests from this origin
-    credentials: true, // If you need to send cookies with requests
+   origin: 'https://your-frontend-url.com', // Replace with your actual frontend URL
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    credentials: true,
   };
   
   // Apply CORS middleware
