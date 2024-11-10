@@ -38,7 +38,7 @@ const Navbar = ({ isAuthenticated, setIsAuthenticated, userName, setUserName }) 
       {/* Navigation Links */}
       <ul className={`navbar-links ${isOpen ? 'active' : ''}`}>
         <li>
-          <Link to="/Dashboard" onClick={closeMenu}>Dashboard</Link>
+          <Link to="/" onClick={closeMenu}>Dashboard</Link>
         </li>
         <li>
           <Link to="/income" onClick={closeMenu}>Income</Link>

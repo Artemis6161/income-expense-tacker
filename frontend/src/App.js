@@ -116,7 +116,7 @@ const fetchExpenses = async () => {
       
       <Routes>
    <Route
-          path="/dashboard"
+          path="/"
           element={
             <PrivateRoute>
               <Dashboard monthlyExpenses={monthlyExpenses} totalIncome={totalIncome}/>

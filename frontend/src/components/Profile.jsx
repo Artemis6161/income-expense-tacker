@@ -63,7 +63,7 @@ setProfile({
       });
    
       console.log('Profile updated successfully:', response.data);
-      navigate('/dashboard')
+      navigate('/')
       toast(" Successful profile updated");
      
      

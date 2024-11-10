@@ -32,5 +32,6 @@ mongoose.connect(process.env.MONGO_URI)
     .catch((err) => console.log("Failed to connect database ", err))
 
 app.listen(5000, () => {
-    console.log("server is running.. 5000")
+    console.log("server is running.. 5000");
+    console.log(__dirname);
 })
