@@ -12,6 +12,7 @@ const app = express();
 const port = process.env.PORT || 5000;
 app.use(express.json({ extended: false }));
 
+app.options('*', cors());
 
 const corsOptions = {
   origin: 'https://income-expense-tacker-frontend.onrender.com', // Update to frontend URL
