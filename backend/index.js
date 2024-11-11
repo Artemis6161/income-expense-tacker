@@ -12,10 +12,9 @@ const app = express();
 const port = process.env.PORT || 5000;
 app.use(express.json({ extended: false }));
 
-// CORS options to allow requests from localhost:3000
+
 const corsOptions = {
-   origin: 'https://income-expense-tacker-frontend.onrender.com', // Replace with your actual frontend URL
-    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+   origin: 'https://income-expense-tacker.onrender.com', 
     credentials: true,
   };
   
@@ -34,5 +33,5 @@ mongoose.connect(process.env.MONGO_URI)
 
 app.listen(port, () => {
     console.log("server is running.. 5000");
-    console.log(__dirname);
+    
 })

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import Modal from '../components/modal'; // Import the Modal component
+import Modal from '../components/modal';
 import './expense.css';
 
 const expenseTypes = [
@@ -11,7 +11,7 @@ const expenseTypes = [
   { value: 'Entertainment', label: 'Entertainment', icon: '🎬' },
   { value: 'Medical', label: 'Medical', icon: '💊' },
   { value: 'Insurance', label: 'Insurance', icon: '🛡️' },
-  { value: 'other', label: 'Other', icon: '📦' },
+  { value: 'Other', label: 'Other', icon: '📦' },
 ];
 
 const Expense = () => {
@@ -26,16 +26,19 @@ const Expense = () => {
   const [editId, setEditId] = useState(null);
   const [totalExpense, setTotalExpense] = useState(0);
   const [isModalOpen, setModalOpen] = useState(false);
-  const [selectedMonth, setSelectedMonth] = useState(''); // Track selected month
+  const [selectedMonth, setSelectedMonth] = useState('');
 
   useEffect(() => {
     fetchExpenses();
+    const currentMonth = new Date().getMonth() + 1;
+    const currentYear = new Date().getFullYear();
+    setSelectedMonth(`${currentMonth}-${currentYear}`);
   }, []);
 
   const fetchExpenses = async () => {
     const token = localStorage.getItem('authToken');
     try {
-      const res = await axios.get('https://income-expense-tacker.onrender.com', {
+      const res = await axios.get('https://income-expense-tacker.onrender.com/api/expense', {
         headers: { Authorization: `Bearer ${token}` },
       });
       setExpenses(res.data);
@@ -45,36 +48,20 @@ const Expense = () => {
     }
   };
 
-  // Group expenses by month and year
   const groupExpensesByMonth = (expenses) => {
     const groupedExpenses = {};
-
     expenses.forEach((expense) => {
       const date = new Date(expense.date);
-      const monthYear = `${date.getMonth() + 1}-${date.getFullYear()}`; // Format as "MM-YYYY"
-
+      const monthYear = `${date.getMonth() + 1}-${date.getFullYear()}`;
       if (!groupedExpenses[monthYear]) {
         groupedExpenses[monthYear] = [];
       }
-
       groupedExpenses[monthYear].push(expense);
     });
-
     return groupedExpenses;
   };
 
-  // Filter expenses by selected month
   const filterExpensesByMonth = (expenses, selectedMonth) => {
-    if (!selectedMonth) {
-      const currentMonth = new Date().getMonth(); // 0-indexed
-      const currentYear = new Date().getFullYear();
-      return expenses.filter(
-        (expense) =>
-          new Date(expense.date).getMonth() === currentMonth &&
-          new Date(expense.date).getFullYear() === currentYear
-      );
-    }
-
     const [selectedMonthNum, selectedYear] = selectedMonth.split('-');
     return expenses.filter(
       (expense) =>
@@ -83,70 +70,56 @@ const Expense = () => {
     );
   };
 
- 
-
-  // Calculate total expense
   const handleSubmit = async (e) => {
     e.preventDefault();
     const token = localStorage.getItem('authToken');
-  
     try {
       if (editId) {
-        // Update existing expense
         await axios.put(
-          "https://income-expense-tacker.onrender.com",
+          `https://income-expense-tacker.onrender.com/api/expense/${editId}`,
           expense,
           { headers: { Authorization: `Bearer ${token}` } }
         );
-        setEditId(null); // Reset editId after successful update
+        setEditId(null);
       } else {
-        // Add new expense
         await axios.post(
-          "https://income-expense-tacker.onrender.com",
+          'https://income-expense-tacker.onrender.com/api/expense',
           expense,
           { headers: { Authorization: `Bearer ${token}` } }
         );
       }
-  
-      setExpense({ title: '', amount: '', category: '', description: '', date: '' }); // Clear form
-      setModalOpen(false); // Close modal after submit
-      fetchExpenses(); // Fetch updated expense list
+      setExpense({ title: '', amount: '', category: '', description: '', date: '' });
+      setModalOpen(false);
+      fetchExpenses();
     } catch (error) {
       console.error('Error submitting expense:', error.response ? error.response.data : error);
     }
   };
-  
-  
-  
-  
+
   const calculateTotalExpense = (expenses) => {
-    const newTotalExpense = expenses.reduce(
-      (sum, entry) => sum + parseFloat(entry.amount),
-      0
-    );
+    const newTotalExpense = expenses.reduce((sum, entry) => sum + parseFloat(entry.amount), 0);
     setTotalExpense(newTotalExpense);
   };
 
   const handleChange = (e) => {
-    console.log("Updating field:", e.target.name, "Value:", e.target.value);  // Debug log
     setExpense({ ...expense, [e.target.name]: e.target.value });
   };
+
   const handleCategoryChange = (e) => {
     setExpense({ ...expense, category: e.target.value });
   };
 
   const handleEdit = (id) => {
     const expenseToEdit = expenses.find((exp) => exp._id === id);
-    setExpense(expenseToEdit); // Set the expense state with the selected expense data
-    setEditId(id); // Set the editId to keep track of the item being edited
-    setModalOpen(true); // Open the modal for editing
+    setExpense(expenseToEdit);
+    setEditId(id);
+    setModalOpen(true);
   };
-  
 
   const handleDelete = async (id) => {
     const token = localStorage.getItem('authToken');
     try {
-      await axios.delete("https://income-expense-tacker.onrender.com", {
+      await axios.delete(`https://income-expense-tacker.onrender.com/api/expense/${id}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       fetchExpenses();
@@ -160,14 +133,10 @@ const Expense = () => {
 
   return (
     <>
-      <h2 >Expenses</h2>
-      <div className="total-income expense ">
-        <h2>
-          Total Expense: <span>{totalExpense.toFixed(2)}</span>
-        </h2>
+      <h2>Expenses</h2>
+      <div className="total-income expense">
+        <h2>Total Expense: <span>{totalExpense.toFixed(2)}</span></h2>
       </div>
-
-     
 
       <div className="expense-container">
         <form onSubmit={handleSubmit}>
@@ -186,7 +155,6 @@ const Expense = () => {
             placeholder="Amount"
             required
           />
-
           <select
             name="category"
             onChange={handleCategoryChange}
@@ -200,14 +168,12 @@ const Expense = () => {
               </option>
             ))}
           </select>
-
           <input
             name="description"
             value={expense.description}
             onChange={handleChange}
             placeholder="Description"
           />
-
           <input
             name="date"
             type="date"
@@ -218,24 +184,23 @@ const Expense = () => {
           <button className="form-button" type="submit">{editId ? 'Update Expense' : 'Add Expense'}</button>
         </form>
 
-        <div className="expense-cards">
-
         <div className="month-selector">
-        <label>Select Month:</label>
-        <select value={selectedMonth} onChange={(e) => setSelectedMonth(e.target.value)}>
-          <option value="">Current Month</option>
-          {Array.from({ length: 12 }, (_, i) => {
-            const month = (i + 1).toString().padStart(2, '0');
-            const year = new Date().getFullYear();
-            return (
-              <option key={`${month}-${year}`} value={`${month}-${year}`}>
-                {`${month}-${year}`}
-              </option>
-            );
-          })}
-        </select>
-      </div>
-      
+          <label>Select Month:</label>
+          <select value={selectedMonth} onChange={(e) => setSelectedMonth(e.target.value)}>
+            <option value="">Current Month</option>
+            {Array.from({ length: 12 }, (_, i) => {
+              const month = (i + 1).toString().padStart(2, '0');
+              const year = new Date().getFullYear();
+              return (
+                <option key={`${month}-${year}`} value={`${month}-${year}`}>
+                  {`${month}-${year}`}
+                </option>
+              );
+            })}
+          </select>
+        </div>
+
+        <div className="expense-cards">
           {filteredExpenses.map((exp) => {
             const expenseType = expenseTypes.find((type) => type.value === exp.category);
             return (
@@ -248,12 +213,8 @@ const Expense = () => {
                   <p>{exp.description}</p>
                 </div>
                 <div className="card-buttons">
-                  <button onClick={() => handleEdit(exp._id)} className="edit-button">
-                    ✏️
-                  </button>
-                  <button onClick={() => handleDelete(exp._id)} className="delete-button">
-                    🗑️
-                  </button>
+                  <button onClick={() => handleEdit(exp._id)} className="edit-button">✏️</button>
+                  <button onClick={() => handleDelete(exp._id)} className="delete-button">🗑️</button>
                 </div>
               </div>
             );
@@ -261,14 +222,14 @@ const Expense = () => {
         </div>
 
         <Modal
-  isOpen={isModalOpen}
-  onClose={() => setModalOpen(false)}
-  onSubmit={handleSubmit}
-  data={expense}
-  expense={expense}
-  handleChange={handleChange}  
-   type="expense"
-/>
+          isOpen={isModalOpen}
+          onClose={() => setModalOpen(false)}
+          onSubmit={handleSubmit}
+          data={expense}
+          expense={expense}
+          handleChange={handleChange}
+          type="expense"
+        />
       </div>
     </>
   );

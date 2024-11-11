@@ -24,7 +24,7 @@ const Profile = () => {
           throw new Error("Authentication token or user ID missing");
         }
   
-        const response = await axios.get("https://income-expense-tacker.onrender.com", {
+        const response = await axios.get(`https://income-expense-tacker.onrender.com/user/profile`, {
           headers: { Authorization: `Bearer ${authToken}` },
           params: { userId }  // Send userId as query param
         });
@@ -51,13 +51,9 @@ setProfile({
     try {
       const authToken = localStorage.getItem('authToken');
       const userId = localStorage.getItem('userId');
-
-      if (!authToken || !userId) throw new Error("Authentication token or user ID missing");
-
-      const response = await axios.put("https://income-expense-tacker.onrender.com", {
+      const response = await axios.put(`https://income-expense-tacker.onrender.com/user/profile`, {
         userId,
         ...profile, // Sending updated profile data
-        
       }, {
         headers: { Authorization: `Bearer ${authToken}` },
       });
