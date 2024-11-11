@@ -12,7 +12,7 @@ const CashFlowChart = ({ monthlyData }) => {
 
   const options = {
     title: 'Monthly Cash Flow',
-    chartArea: { width: '50%' },
+    chartArea: { width: '40%' },
     hAxis: {
       title: 'Amount',
       minValue: 0,

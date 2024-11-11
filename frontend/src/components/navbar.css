@@ -80,7 +80,7 @@ body, html {
 
 @media (max-width: 768px) {
   /* Hide the navbar links on small screens */
-  .navbar-links {
+  .navbar-links { 
     display: none;
     flex-direction: column;
     width: 100%;
@@ -88,7 +88,9 @@ body, html {
     top: 60px;
     left: 0;
     background-color: #fff;
+    gap: 10px; /* Adjust the gap value as needed */
   }
+  
 
   /* Display the navbar links when the hamburger menu is active */
   .navbar-links.active {
