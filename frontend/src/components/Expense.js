@@ -184,6 +184,9 @@ const Expense = () => {
           <button className="form-button" type="submit">{editId ? 'Update Expense' : 'Add Expense'}</button>
         </form>
 
+        
+
+        <div className="expense-cards">
         <div className="month-selector">
           <label>Select Month:</label>
           <select value={selectedMonth} onChange={(e) => setSelectedMonth(e.target.value)}>
@@ -199,8 +202,6 @@ const Expense = () => {
             })}
           </select>
         </div>
-
-        <div className="expense-cards">
           {filteredExpenses.map((exp) => {
             const expenseType = expenseTypes.find((type) => type.value === exp.category);
             return (
